@@ -1,0 +1,591 @@
+{
+  "model": {
+    "dimensions": {
+      "date": {
+        "dimensionType": "datetime",
+        "primaryKey": [
+          "CICLO"
+        ],
+        "attributes": {
+          "CICLO": {
+            "source": "CICLO",
+            "title": "Ciclo"
+          }
+        }
+      },
+      "administrative-classification": {
+        "dimensionType": "classification",
+        "primaryKey": [
+          "ID_RAMO",
+          "ID_UR"
+        ],
+        "attributes": {
+          "ID_RAMO": {
+            "source": "ID_RAMO",
+            "title": "Ramo"
+          },
+          "DESC_RAMO": {
+            "source": "DESC_RAMO",
+            "title": "DESC_RAMO",
+            "labelfor": "ID_RAMO"
+          },
+          "ID_UR": {
+            "source": "ID_UR",
+            "title": "Unidad Responsable",
+            "parent": "ID_RAMO"
+          },
+          "DESC_UR": {
+            "source": "DESC_UR",
+            "title": "DESC_UR",
+            "labelfor": "ID_UR"
+          }
+        },
+        "classificationType": "administrative"
+      },
+      "functional-classification": {
+        "dimensionType": "classification",
+        "primaryKey": [
+          "GPO_FUNCIONAL",
+          "ID_FUNCION",
+          "ID_SUBFUNCION",
+          "ID_AI"
+        ],
+        "attributes": {
+          "GPO_FUNCIONAL": {
+            "source": "GPO_FUNCIONAL",
+            "title": "Grupo Funcional"
+          },
+          "DESC_GPO_FUNCIONAL": {
+            "source": "DESC_GPO_FUNCIONAL",
+            "title": "DESC_GPO_FUNCIONAL",
+            "labelfor": "GPO_FUNCIONAL"
+          },
+          "ID_FUNCION": {
+            "source": "ID_FUNCION",
+            "title": "Función",
+            "parent": "GPO_FUNCIONAL"
+          },
+          "DESC_FUNCION": {
+            "source": "DESC_FUNCION",
+            "title": "DESC_FUNCION",
+            "labelfor": "ID_FUNCION"
+          },
+          "ID_SUBFUNCION": {
+            "source": "ID_SUBFUNCION",
+            "title": "Subfunción",
+            "parent": "ID_FUNCION"
+          },
+          "DESC_SUBFUNCION": {
+            "source": "DESC_SUBFUNCION",
+            "title": "DESC_SUBFUNCION",
+            "labelfor": "ID_SUBFUNCION"
+          },
+          "ID_AI": {
+            "source": "ID_AI",
+            "title": "Actividad Institucional",
+            "parent": "ID_SUBFUNCION"
+          },
+          "DESC_AI": {
+            "source": "DESC_AI",
+            "title": "DESC_AI",
+            "labelfor": "ID_AI"
+          }
+        },
+        "classificationType": "functional"
+      },
+      "activity": {
+        "dimensionType": "activity",
+        "primaryKey": [
+          "ID_MODALIDAD",
+          "ID_PP"
+        ],
+        "attributes": {
+          "ID_MODALIDAD": {
+            "source": "ID_MODALIDAD",
+            "title": "Modalidad"
+          },
+          "DESC_MODALIDAD": {
+            "source": "DESC_MODALIDAD",
+            "title": "DESC_MODALIDAD",
+            "labelfor": "ID_MODALIDAD"
+          },
+          "ID_PP": {
+            "source": "ID_PP",
+            "title": "Programa Presupuestario",
+            "parent": "ID_MODALIDAD"
+          },
+          "DESC_PP": {
+            "source": "DESC_PP",
+            "title": "DESC_PP",
+            "labelfor": "ID_PP"
+          }
+        }
+      },
+      "economic-classification": {
+        "dimensionType": "classification",
+        "primaryKey": [
+          "ID_CAPITULO",
+          "ID_CONCEPTO",
+          "ID_PARTIDA_GENERICA",
+          "ID_PARTIDA_ESPECIFICA"
+        ],
+        "attributes": {
+          "ID_CAPITULO": {
+            "source": "ID_CAPITULO",
+            "title": "Capítulo"
+          },
+          "DESC_CAPITULO": {
+            "source": "DESC_CAPITULO",
+            "title": "DESC_CAPITULO",
+            "labelfor": "ID_CAPITULO"
+          },
+          "ID_CONCEPTO": {
+            "source": "ID_CONCEPTO",
+            "title": "Concepto",
+            "parent": "ID_CAPITULO"
+          },
+          "DESC_CONCEPTO": {
+            "source": "DESC_CONCEPTO",
+            "title": "DESC_CONCEPTO",
+            "labelfor": "ID_CONCEPTO"
+          },
+          "ID_PARTIDA_GENERICA": {
+            "source": "ID_PARTIDA_GENERICA",
+            "title": "Partida Genérica",
+            "parent": "ID_CONCEPTO"
+          },
+          "DESC_PARTIDA_GENERICA": {
+            "source": "DESC_PARTIDA_GENERICA",
+            "title": "DESC_PARTIDA_GENERICA",
+            "labelfor": "ID_PARTIDA_GENERICA"
+          },
+          "ID_PARTIDA_ESPECIFICA": {
+            "source": "ID_PARTIDA_ESPECIFICA",
+            "title": "Partida Específica",
+            "parent": "ID_PARTIDA_GENERICA"
+          },
+          "DESC_PARTIDA_ESPECIFICA": {
+            "source": "DESC_PARTIDA_ESPECIFICA",
+            "title": "DESC_PARTIDA_ESPECIFICA",
+            "labelfor": "ID_PARTIDA_ESPECIFICA"
+          }
+        },
+        "classificationType": "economic"
+      },
+      "expenditure-type": {
+        "dimensionType": "other",
+        "primaryKey": [
+          "ID_TIPOGASTO"
+        ],
+        "attributes": {
+          "ID_TIPOGASTO": {
+            "source": "ID_TIPOGASTO",
+            "title": "Tipo de Gasto"
+          },
+          "DESC_TIPOGASTO": {
+            "source": "DESC_TIPOGASTO",
+            "title": "DESC_TIPOGASTO",
+            "labelfor": "ID_TIPOGASTO"
+          }
+        }
+      },
+      "fin-source": {
+        "dimensionType": "other",
+        "primaryKey": [
+          "ID_FF"
+        ],
+        "attributes": {
+          "ID_FF": {
+            "source": "ID_FF",
+            "title": "Fuente de Financiamiento"
+          },
+          "DESC_FF": {
+            "source": "DESC_FF",
+            "title": "DESC_FF",
+            "labelfor": "ID_FF"
+          }
+        }
+      },
+      "geo-source": {
+        "dimensionType": "location",
+        "primaryKey": [
+          "ID_ENTIDAD_FEDERATIVA"
+        ],
+        "attributes": {
+          "ID_ENTIDAD_FEDERATIVA": {
+            "source": "ID_ENTIDAD_FEDERATIVA",
+            "title": "Entidad Federativa"
+          },
+          "ENTIDAD_FEDERATIVA": {
+            "source": "ENTIDAD_FEDERATIVA",
+            "title": "ENTIDAD_FEDERATIVA",
+            "labelfor": "ID_ENTIDAD_FEDERATIVA"
+          }
+        }
+      },
+      "budget-line-id": {
+        "dimensionType": "fact",
+        "primaryKey": [
+          "ID_CLAVE_CARTERA"
+        ],
+        "attributes": {
+          "ID_CLAVE_CARTERA": {
+            "source": "ID_CLAVE_CARTERA",
+            "title": "Clave de Cartera"
+          }
+        }
+      }
+    },
+    "measures": {
+      "MONTO_PROYECTO": {
+        "source": "MONTO_PROYECTO",
+        "title": "Monto",
+        "currency": "MXN"
+      }
+    }
+  },
+  "promise": {},
+  "title": "Proyecto de Presupuesto de Egresos de la Federación 2018",
+  "name": "ppef_2018",
+  "resources": [
+    {
+      "name": "ppef_2018",
+      "format": "csv",
+      "path": "ppef_2018.csv",
+      "mediatype": "application/vnd.ms-excel",
+      "bytes": 105995457,
+      "dialect": {
+        "csvddfVersion": 1,
+        "delimiter": ",",
+        "lineTerminator": "\r\n"
+      },
+      "encoding": "windows-1252",
+      "schema": {
+        "fields": [
+          {
+            "title": "Ciclo",
+            "name": "CICLO",
+            "slug": "CICLO",
+            "type": "integer",
+            "format": "default",
+            "osType": "date:fiscal-year",
+            "conceptType": "date"
+          },
+          {
+            "title": "Ramo",
+            "name": "ID_RAMO",
+            "slug": "ID_RAMO",
+            "type": "string",
+            "format": "default",
+            "osType": "administrative-classification:generic:level1:code",
+            "conceptType": "administrative-classification"
+          },
+          {
+            "title": "DESC_RAMO",
+            "name": "DESC_RAMO",
+            "slug": "DESC_RAMO",
+            "type": "string",
+            "format": "default",
+            "osType": "administrative-classification:generic:level1:label",
+            "conceptType": "administrative-classification"
+          },
+          {
+            "title": "Unidad Responsable",
+            "name": "ID_UR",
+            "slug": "ID_UR",
+            "type": "string",
+            "format": "default",
+            "osType": "administrative-classification:generic:level2:code:full",
+            "conceptType": "administrative-classification"
+          },
+          {
+            "title": "DESC_UR",
+            "name": "DESC_UR",
+            "slug": "DESC_UR",
+            "type": "string",
+            "format": "default",
+            "osType": "administrative-classification:generic:level2:label",
+            "conceptType": "administrative-classification"
+          },
+          {
+            "title": "Grupo Funcional",
+            "name": "GPO_FUNCIONAL",
+            "slug": "GPO_FUNCIONAL",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level1:code",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "DESC_GPO_FUNCIONAL",
+            "name": "DESC_GPO_FUNCIONAL",
+            "slug": "DESC_GPO_FUNCIONAL",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level1:label",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "Función",
+            "name": "ID_FUNCION",
+            "slug": "ID_FUNCION",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level2:code:full",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "DESC_FUNCION",
+            "name": "DESC_FUNCION",
+            "slug": "DESC_FUNCION",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level2:label",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "Subfunción",
+            "name": "ID_SUBFUNCION",
+            "slug": "ID_SUBFUNCION",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level3:code:full",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "DESC_SUBFUNCION",
+            "name": "DESC_SUBFUNCION",
+            "slug": "DESC_SUBFUNCION",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level3:label",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "Actividad Institucional",
+            "name": "ID_AI",
+            "slug": "ID_AI",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level4:code:full",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "DESC_AI",
+            "name": "DESC_AI",
+            "slug": "DESC_AI",
+            "type": "string",
+            "format": "default",
+            "osType": "functional-classification:generic:level4:label",
+            "conceptType": "functional-classification"
+          },
+          {
+            "title": "Modalidad",
+            "name": "ID_MODALIDAD",
+            "slug": "ID_MODALIDAD",
+            "type": "string",
+            "format": "default",
+            "osType": "activity:generic:program:code",
+            "conceptType": "activity"
+          },
+          {
+            "title": "DESC_MODALIDAD",
+            "name": "DESC_MODALIDAD",
+            "slug": "DESC_MODALIDAD",
+            "type": "string",
+            "format": "default",
+            "osType": "activity:generic:program:label",
+            "conceptType": "activity"
+          },
+          {
+            "title": "Programa Presupuestario",
+            "name": "ID_PP",
+            "slug": "ID_PP",
+            "type": "string",
+            "format": "default",
+            "osType": "activity:generic:project:code:full",
+            "conceptType": "activity"
+          },
+          {
+            "title": "DESC_PP",
+            "name": "DESC_PP",
+            "slug": "DESC_PP",
+            "type": "string",
+            "format": "default",
+            "osType": "activity:generic:project:label",
+            "conceptType": "activity"
+          },
+          {
+            "title": "Capítulo",
+            "name": "ID_CAPITULO",
+            "slug": "ID_CAPITULO",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level1:code",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "DESC_CAPITULO",
+            "name": "DESC_CAPITULO",
+            "slug": "DESC_CAPITULO",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level1:label",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Concepto",
+            "name": "ID_CONCEPTO",
+            "slug": "ID_CONCEPTO",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level2:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "DESC_CONCEPTO",
+            "name": "DESC_CONCEPTO",
+            "slug": "DESC_CONCEPTO",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level2:label",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Partida Genérica",
+            "name": "ID_PARTIDA_GENERICA",
+            "slug": "ID_PARTIDA_GENERICA",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level3:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "DESC_PARTIDA_GENERICA",
+            "name": "DESC_PARTIDA_GENERICA",
+            "slug": "DESC_PARTIDA_GENERICA",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level3:label",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Partida Específica",
+            "name": "ID_PARTIDA_ESPECIFICA",
+            "slug": "ID_PARTIDA_ESPECIFICA",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level4:code:full",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "DESC_PARTIDA_ESPECIFICA",
+            "name": "DESC_PARTIDA_ESPECIFICA",
+            "slug": "DESC_PARTIDA_ESPECIFICA",
+            "type": "string",
+            "format": "default",
+            "osType": "economic-classification:generic:level4:label",
+            "conceptType": "economic-classification"
+          },
+          {
+            "title": "Tipo de Gasto",
+            "name": "ID_TIPOGASTO",
+            "slug": "ID_TIPOGASTO",
+            "type": "string",
+            "format": "default",
+            "osType": "expenditure-type:code",
+            "conceptType": "expenditure-type"
+          },
+          {
+            "title": "DESC_TIPOGASTO",
+            "name": "DESC_TIPOGASTO",
+            "slug": "DESC_TIPOGASTO",
+            "type": "string",
+            "format": "default",
+            "osType": "expenditure-type:label",
+            "conceptType": "expenditure-type"
+          },
+          {
+            "title": "Fuente de Financiamiento",
+            "name": "ID_FF",
+            "slug": "ID_FF",
+            "type": "string",
+            "format": "default",
+            "osType": "fin-source:generic:code",
+            "conceptType": "fin-source"
+          },
+          {
+            "title": "DESC_FF",
+            "name": "DESC_FF",
+            "slug": "DESC_FF",
+            "type": "string",
+            "format": "default",
+            "osType": "fin-source:generic:label",
+            "conceptType": "fin-source"
+          },
+          {
+            "title": "Entidad Federativa",
+            "name": "ID_ENTIDAD_FEDERATIVA",
+            "slug": "ID_ENTIDAD_FEDERATIVA",
+            "type": "string",
+            "format": "default",
+            "osType": "geo-source:target:code",
+            "conceptType": "geo-source"
+          },
+          {
+            "title": "ENTIDAD_FEDERATIVA",
+            "name": "ENTIDAD_FEDERATIVA",
+            "slug": "ENTIDAD_FEDERATIVA",
+            "type": "string",
+            "format": "default",
+            "osType": "geo-source:target:title",
+            "conceptType": "geo-source"
+          },
+          {
+            "title": "Clave de Cartera",
+            "name": "ID_CLAVE_CARTERA",
+            "slug": "ID_CLAVE_CARTERA",
+            "type": "string",
+            "format": "default",
+            "osType": "budget-line-id",
+            "conceptType": "budget-line-id"
+          },
+          {
+            "title": "Monto",
+            "name": "MONTO_PROYECTO",
+            "slug": "MONTO_PROYECTO",
+            "type": "number",
+            "format": "default",
+            "osType": "value",
+            "conceptType": "value",
+            "decimalChar": ".",
+            "groupChar": ","
+          }
+        ],
+        "primaryKey": [
+          "CICLO",
+          "ID_RAMO",
+          "ID_UR",
+          "GPO_FUNCIONAL",
+          "ID_FUNCION",
+          "ID_SUBFUNCION",
+          "ID_AI",
+          "ID_MODALIDAD",
+          "ID_PP",
+          "ID_CAPITULO",
+          "ID_CONCEPTO",
+          "ID_PARTIDA_GENERICA",
+          "ID_PARTIDA_ESPECIFICA",
+          "ID_TIPOGASTO",
+          "ID_FF",
+          "ID_ENTIDAD_FEDERATIVA",
+          "ID_CLAVE_CARTERA"
+        ]
+      }
+    }
+  ],
+  "@context": "http://schemas.frictionlessdata.io/fiscal-data-package.jsonld",
+  "owner": "23704d78614b34c56f770509e62e8109",
+  "author": "Victor De Leon <vleonfavela@gmail.com>",
+  "count_of_rows": 186517
+}
