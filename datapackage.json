@@ -251,7 +251,7 @@
     {
       "name": "ppef_2018",
       "format": "csv",
-      "path": "https://storage.openspending.org/ppef_2018.csv",
+      "path": "https://storage.openspending.org/proyecto-de-presupuesto-de-egresos-de-la-federacion-2018/ppef_2018.csv",
       "mediatype": "application/vnd.ms-excel",
       "bytes": 105995457,
       "dialect": {
