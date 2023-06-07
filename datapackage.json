@@ -587,5 +587,9 @@
   "@context": "http://schemas.frictionlessdata.io/fiscal-data-package.jsonld",
   "owner": "23704d78614b34c56f770509e62e8109",
   "author": "Victor De Leon <vleonfavela@gmail.com>",
+  "fiscalPeriod": {
+    "start": "2018-01-01",
+    "end": "2018-12-31"
+  },
   "count_of_rows": 186517
 }
